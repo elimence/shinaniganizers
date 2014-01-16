@@ -1,0 +1,81 @@
+extends layout
+
+block pagespecificstyles
+  link(href='/assets/css/selectize.css', rel='stylesheet')
+  link(href='/assets/css/dashboard.css', rel='stylesheet')
+  link(href='/assets/css/reports.css', rel='stylesheet')
+
+block content
+  .container-fluid.main
+    .col-xs-3.control
+      .row
+        .col-lg-12(style='border-bottom: 1px solid #efefef;')
+          h2#brand
+            a(href='/dashboard')
+              | WaterReport
+              sup ®
+      .row.filters
+        // <h3>Browse Births Data</h3>
+        .col-lg-12(style='padding-left: 0; padding-right: 0;')
+          select#communities.demo-default(placeholder='Select a person...')
+            option(value='') Select a Water Source...
+            each location in locations
+              option(value='#{location._id}') #{location.fullname()}
+        .col-lg-12(style='padding-left: 0; padding-right: 0;')
+          a#filter-btn.btn.btn-lg.btn-default.btn-block Search
+        .col-lg-12
+          p.lead.list-communities-label(style='') Alternatively, you can
+        a#list-communities.btn.btn-lg.btn-default.btn-block List all Water Sources
+    .col-xs-9.viewport
+      .header
+        ul.nav.navbar-nav
+          li
+            a(href='../navbar-static-top/') Generate Reports
+        ul.nav.navbar-nav.navbar-right
+          li#current-user Welcome #{user.firstname}
+          li.active
+            a#logout(href='./') (Logout)
+      .body.dashbody.stats
+        .row
+          .col-lg-12
+            // <h1 id="stats-heading">Dashboard <small>Statistics Overview</small></h1>
+            ol.breadcrumb(style='border-radius: 0px;')
+              h1#stats-heading Showing #{kind} pump sites...
+        if reports.length
+          .row.reports-table
+            .col-lg-12
+              .table-responsive
+                table.table.table-bordered.table-striped
+                  thead
+                    tr
+                      th #id
+                      th.center Location
+                      th.center Leaking
+                      th.center Functional
+                      th.center Date Submitted
+                      th.center Submitted By
+                  tbody
+                    each report in reports
+                      tr
+                        th #{report.location.identifier}
+                        td.center #{report.location.name}, #{report.location.district}, #{report.location.region}
+                        td.center #{report.leakagestatus}
+                        td.center #{report.functional}
+                        td.center
+                          i.fa.fa-clock-o&nbsp;
+                          span.ago #{report.created_at}
+                        td.center #{report.sender.firstname}
+            .col-lg-12.map-link-holder
+              a.map-link(href='#')
+                span.fa.fa-map-marker.fa-5x
+                p.lead View on Map
+
+  script(src='/assets/js/jquery.js')
+  script(src='/assets/js/bootstrap.min.js')
+  script(src='/assets/js/selectize.js')
+  script(src='/assets/js/highcharts.js')
+  script(src='/assets/js/exporting.js')
+  script(src='/assets/js/moment.min.js')
+  script(src='/assets/js/dashboard.js')
+  script
+    $(function () { init();});

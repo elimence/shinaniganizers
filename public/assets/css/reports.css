@@ -1,0 +1,27 @@
+.viewport .body #stats-heading {
+  /*color: #00b0ff*/
+}
+table th,
+table td {
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Alegreya Sans', sans-serif;
+}
+table th {
+  font-size: 1.4em;
+  color: #6A6A6A;
+}
+table td {
+  font-size: 1.3em
+}
+.map-link-holder {
+  text-align: center;
+}
+.map-link:link,
+.map-link:visited {
+  color: #E79000;
+}
+.map-link:hover,
+.map-link:active {
+  color: #e39800;
+  text-decoration: none;
+}
