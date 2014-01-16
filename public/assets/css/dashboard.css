@@ -26,6 +26,11 @@ body{
   margin: 0;
   padding: 0.5em;
 }
+.main .control #brand a:hover,
+.main .control #brand a:active {
+  text-decoration: none;
+  color: #27a9e3;
+}
 .main .control .filters {
   border: 0px solid #f00;
   padding-left: 0;
@@ -231,4 +236,7 @@ body{
 }
 .four .action:hover {
   background-color: #9E1B1B;
+}
+.center {
+  text-align: center;
 }
