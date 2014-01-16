@@ -10,7 +10,7 @@ block content
       .row
         .col-lg-12(style='border-bottom: 1px solid #efefef;')
           h2#brand
-            a(href='')
+            a(href='/dashboard')
               | WaterReport
               sup ®
       .row.filters
@@ -18,16 +18,8 @@ block content
         .col-lg-12(style='padding-left: 0; padding-right: 0;')
           select#communities.demo-default(placeholder='Select a person...')
             option(value='') Select a Water Source...
-            option(value='val1') Presby Primary School, Fiapre, Sunyani West, Brong Ahafo
-            option(value='val2') Cocoa Shed Aduonya, Sunyani West, Brong Ahafo
-            option(value='val3') Pentecost Church Mantukwa, Sunyani West, Brong Ahafo
-            option(value='val4') Kwapun Primary School, Sissala East, Upper West
-            option(value='val5') Wallembelle J.H.S, Sissala East, Upper West
-            option(value='val6') Court House Tumu, Sissala East, Upper West
-            option(value='val7') Frafra Traditional Council, Bolgatanga, Upper East
-            option(value='val8') House of Chiefs, Bolgatanga, Upper East
-            option(value='val9') Sumbrungu Old Market, Bolgatanga, Upper East
-            option(value='val10') Koliba Market Square, Bolgatanga, Upper East
+            each location in locations
+              option(value='#{location._id}') #{location.fullname()}
         .col-lg-12(style='padding-left: 0; padding-right: 0;')
           a#filter-btn.btn.btn-lg.btn-default.btn-block Search
         .col-lg-12
@@ -59,13 +51,13 @@ block content
                 .col-xs-3.icon-holder
                   i.fa.fa-check-circle.fa-5x.icon
                 .col-xs-9.description
-                  span.stat 400
-                  span.stat-label New Births Today
+                  span.stat #{stats.working}
+                  span.stat-label Pumps Working
               .action
                 .col-lg-9
-                  a.view-more(href='#') View More
+                  a.view-more(href='/dashboard/reports?kind=working') View More
                 .col-lg-3.arrow-holder
-                  a.view-more-arrow(href='#')
+                  a.view-more-arrow(href='/dashboard/reports?kind=working')
                     i.fa.fa-arrow-circle-o-right
           .col-lg-4
             .box-highlight.four
@@ -73,13 +65,13 @@ block content
                 .col-xs-3.icon-holder
                   i.fa.fa-exclamation-circle.fa-5x.icon
                 .col-xs-9.description
-                  span.stat 255
-                  span.stat-label Female Births
+                  span.stat #{stats.faulty}
+                  span.stat-label Faulty Pumps
               .action
                 .col-lg-9
-                  a.view-more(href='#') View More
+                  a.view-more(href='/dashboard/reports?kind=faulty') View More
                 .col-lg-3.arrow-holder
-                  a.view-more-arrow(href='#')
+                  a.view-more-arrow(href='/dashboard/reports?kind=faulty')
                     i.fa.fa-arrow-circle-o-right
           .col-lg-4
             .box-highlight.three
@@ -87,13 +79,13 @@ block content
                 .col-xs-3.icon-holder
                   i.fa.fa-list-alt.fa-5x.icon
                 .col-xs-9.description
-                  span.stat 145
-                  span.stat-label Male Births
+                  span.stat #{stats.total}
+                  span.stat-label Total Sites
               .action
                 .col-lg-9
-                  a.view-more(href='#') View More
+                  a.view-more(href='/dashboard/reports?kind=all') View More
                 .col-lg-3.arrow-holder
-                  a.view-more-arrow(href='#')
+                  a.view-more-arrow(href='/dashboard/reports?kind=all')
                     i.fa.fa-arrow-circle-o-right
         .row.graphs(style='margin-top: 2em;')
           .col-lg-12
