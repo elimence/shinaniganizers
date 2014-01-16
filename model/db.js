@@ -2,7 +2,8 @@
 * Module Dependencies
 */
 var mongoose 		= 		require('mongoose'),
-		Schema 			= 		mongoose.Schema;
+		Schema 			= 		mongoose.Schema,
+    step = require('async');
 
 // Connect to the database
 var dbUriString = 	process.env.MONGOLAB_URI || process.env.MONGOHQ_URL  || 'mongodb://localhost/births';
@@ -47,20 +48,18 @@ var AnalystSchema = new Schema({
   }
 });
 
-// Birth Records
-var BirthRecordSchema = new Schema({
-  fullname: String,
-  placeofbirth: String,
-  dateofbirth: String,
-  gender: String,
-  mothersmaidenname: String,
+// StatusReport Schema
+var StatusReportSchema = new Schema({
+  location: {
+    type: Schema.ObjectId,
+    ref: 'Location'
+  },
+  leakagestatus: String,
+  functional: String,
+  flowrate: Number,
   sender: {
     type: Schema.ObjectId,
     ref: 'FieldOfficer'
-  },
-  hasCertificate: {
-    type: Boolean,
-    default: false
   },
   created_at: {
     type: Date,
@@ -68,7 +67,56 @@ var BirthRecordSchema = new Schema({
   }
 });
 
+// Status Reports Class Method
+StatusReportSchema.statics.stats = function (callback) {
+  var Reports = mongoose.model('StatusReport');
+  step.parallel([
+    function(callback){
+      Reports.count({leakagestatus: new RegExp('y', 'gi')}, function (err, count) {
+        if (err) callback(err);
+        else callback(null, count);
+      });
+    },
+    function(callback){
+      Reports.count({leakagestatus: new RegExp('n', 'gi')}, function (err, count) {
+        if (err) callback(err);
+        else callback(null, count);
+      });       
+    }
+  ],
+  // optional callback
+  function (err, stats){
+    if (err) callback(err);
+    else {
+      stats[stats.length] = stats[0] + stats[1];
+      callback(null, stats);
+    }
+  });
+}
+
+// Location Schema
+var LocationSchema = new Schema({
+  identifier: String,
+  name: String,
+  description: String,
+  region: String,
+  district: String,
+  constituency: String,
+  lat: Number,
+  lng: Number,
+  created_at: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+// Location Instance Method
+LocationSchema.methods.fullname = function () {
+  return this.name + ', ' + this.district + ', ' + this.region;
+}
+
 // Compile Schemas into Models
 mongoose.model( 'FieldOfficer', FieldOfficerSchema );
 mongoose.model( 'Analyst', AnalystSchema );
-mongoose.model( 'BirthRecord', BirthRecordSchema );
+mongoose.model( 'Location', LocationSchema );
+mongoose.model( 'StatusReport', StatusReportSchema );
