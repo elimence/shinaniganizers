@@ -9,12 +9,13 @@ block content
   .container.info
     .col-lg-6.intro
       h1#brand
-        | BirthsReport
+        | WaterReport
         sup ®
-      p.lead An Automated Births Registry
+      p.lead Information Flow for Safe Water
     .col-lg-6.login
-      form.form-signin(role='form')
-        p.lead.error #{error}
-        input#username.form-control.input(type='text', placeholder='Operator ID', required='required', autofocus='autofocus')
-        input.form-control.input(type='password', placeholder='Password', required='required')
+      form.form-signin(role='form', method='POST')
+        if hasErrors
+          p.lead.error(style='text-align: center; color: #f00; position: relative; top: 19px;') Check your credentials
+        input#username.form-control.input(name='username', type='text', placeholder='Operator ID', required='required', autofocus='autofocus')
+        input.form-control.input(name='password', type='password', placeholder='Password', required='required')
         button#login-btn.btn.btn-lg.btn-success.btn-block(type='submit') Log In
