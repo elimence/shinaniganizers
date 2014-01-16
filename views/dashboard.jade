@@ -1,0 +1,108 @@
+extends layout
+
+block pagespecificstyles
+  link(href='/assets/css/selectize.css', rel='stylesheet')
+  link(href='/assets/css/dashboard.css', rel='stylesheet')
+
+block content
+  .container-fluid.main
+    .col-xs-3.control
+      .row
+        .col-lg-12(style='border-bottom: 1px solid #efefef;')
+          h2#brand
+            a(href='')
+              | WaterReport
+              sup ®
+      .row.filters
+        // <h3>Browse Births Data</h3>
+        .col-lg-12(style='padding-left: 0; padding-right: 0;')
+          select#communities.demo-default(placeholder='Select a person...')
+            option(value='') Select a Water Source...
+            option(value='val1') Presby Primary School, Fiapre, Sunyani West, Brong Ahafo
+            option(value='val2') Cocoa Shed Aduonya, Sunyani West, Brong Ahafo
+            option(value='val3') Pentecost Church Mantukwa, Sunyani West, Brong Ahafo
+            option(value='val4') Kwapun Primary School, Sissala East, Upper West
+            option(value='val5') Wallembelle J.H.S, Sissala East, Upper West
+            option(value='val6') Court House Tumu, Sissala East, Upper West
+            option(value='val7') Frafra Traditional Council, Bolgatanga, Upper East
+            option(value='val8') House of Chiefs, Bolgatanga, Upper East
+            option(value='val9') Sumbrungu Old Market, Bolgatanga, Upper East
+            option(value='val10') Koliba Market Square, Bolgatanga, Upper East
+        .col-lg-12(style='padding-left: 0; padding-right: 0;')
+          a#filter-btn.btn.btn-lg.btn-default.btn-block Search
+        .col-lg-12
+          p.lead.list-communities-label(style='') Alternatively, you can
+        a#list-communities.btn.btn-lg.btn-default.btn-block List all Water Sources
+    .col-xs-9.viewport
+      .header
+        ul.nav.navbar-nav
+          li
+            a(href='../navbar-static-top/') Reports
+          li.active
+            a(href='./') Visualisation
+          li
+            a(href='../navbar/') Generate Certificates
+        ul.nav.navbar-nav.navbar-right
+          li#current-user Welcome #{user.firstname}
+          li.active
+            a#logout(href='./') (Logout)
+      .body.dashbody.stats
+        .row
+          .col-lg-12
+            // <h1 id="stats-heading">Dashboard <small>Statistics Overview</small></h1>
+            ol.breadcrumb(style='border-radius: 0px;')
+              h1#stats-heading Overview
+        .row.overview-stats
+          .col-lg-4
+            .box-highlight.two
+              .details
+                .col-xs-3.icon-holder
+                  i.fa.fa-check-circle.fa-5x.icon
+                .col-xs-9.description
+                  span.stat 400
+                  span.stat-label New Births Today
+              .action
+                .col-lg-9
+                  a.view-more(href='#') View More
+                .col-lg-3.arrow-holder
+                  a.view-more-arrow(href='#')
+                    i.fa.fa-arrow-circle-o-right
+          .col-lg-4
+            .box-highlight.four
+              .details
+                .col-xs-3.icon-holder
+                  i.fa.fa-exclamation-circle.fa-5x.icon
+                .col-xs-9.description
+                  span.stat 255
+                  span.stat-label Female Births
+              .action
+                .col-lg-9
+                  a.view-more(href='#') View More
+                .col-lg-3.arrow-holder
+                  a.view-more-arrow(href='#')
+                    i.fa.fa-arrow-circle-o-right
+          .col-lg-4
+            .box-highlight.three
+              .details
+                .col-xs-3.icon-holder
+                  i.fa.fa-list-alt.fa-5x.icon
+                .col-xs-9.description
+                  span.stat 145
+                  span.stat-label Male Births
+              .action
+                .col-lg-9
+                  a.view-more(href='#') View More
+                .col-lg-3.arrow-holder
+                  a.view-more-arrow(href='#')
+                    i.fa.fa-arrow-circle-o-right
+        .row.graphs(style='margin-top: 2em;')
+          .col-lg-12
+            #chartContainer(style='min-width: 310px; height: 320px; margin: 0 auto;')
+  script(src='assets/js/jquery.js')
+  script(src='assets/js/bootstrap.min.js')
+  script(src='assets/js/selectize.js')
+  script(src='assets/js/highcharts.js')
+  script(src='assets/js/exporting.js')
+  script(src='assets/js/dashboard.js')
+  script
+    $(function () { init();});

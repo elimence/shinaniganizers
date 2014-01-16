@@ -1,0 +1,234 @@
+html {/* make sure it is at least as tall as the viewport */
+  min-height:100%;
+  position:relative;
+}
+body{ 
+  height:100%;
+}
+
+.main {
+  height: 100%;
+  border: 0px solid #f1f1f1;
+}
+.main .control {
+  /*width: 24.5%;*/
+  border: 1px solid #efefef;
+  height: 100%;
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow:hidden;
+  z-index:-1;
+}
+.main .control #brand {
+  margin: 0;
+  padding: 0.5em;
+}
+.main .control .filters {
+  border: 0px solid #f00;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0px;
+}
+.main .control .filters #filter-btn,
+.main .control .filters #list-communities {
+  border-radius: 0;
+  border: none;
+  /*background-color: #ebebeb;*/
+  background-color: #F1F1F1;
+  position: relative;
+  bottom: 5px;
+  color: #707070;
+/*  color: #00B85C;*/
+}
+.main .control .filters #filter-btn:hover,
+.main .control .filters #list-communities:hover {
+  /*color: #fff;*/
+  /*background-color: #F6F5F5;*/
+  /*background-color: #ebebeb;*/
+  border-color: #ebebeb;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.main .control .filters .list-communities-label {
+  text-align: center;
+  margin-bottom: 21px;
+  font-size: 19px;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/*.main .control .filters #list-communities {
+  background-color: #EBF5FF;
+  color: #85C2FF;
+}*/
+.main .control .filters #list-communities:hover {
+  /*color: #fff;*/
+  background-color: #F6F5F5;
+  border-color: #ebebeb;
+}
+
+
+
+
+
+
+
+
+.main .viewport {
+  /*margin-left: 25.0%;*/
+  padding-left: 0;
+  padding-right: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+}
+
+.main .viewport .header {
+  height: 65px;
+  border: 1px solid #efefef;
+  border-left: none;
+  /*border-right: none;*/
+}
+.main .viewport .header .navbar-nav > li > a {
+  padding-top: 21px;
+  padding-bottom: 21px;
+  font-size: 1.4em;
+  color: #428bca;
+}
+.main .viewport .header .navbar-nav > li > a#logout {
+  color: #4cae4c;
+}
+.main .viewport .header .navbar-nav > li > a#logout:hover {
+  color: #428bca;
+}
+
+.main .viewport .header .navbar-nav > li > a:hover,
+.main .viewport .header .navbar-nav > li > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  color: #4cae4c;
+}
+.main .viewport .header .navbar-nav #current-user {
+  margin-top: 0.85em;
+  font-size: 1.4em;
+  color: #EEA200;
+}
+
+.viewport {}
+.viewport .body {}
+.viewport .body #stats-heading {
+  padding-left: 0.5em;
+  margin-top: 0.0em;
+  font-size: 1.65em;
+  position: relative;
+  top: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+.dashbody {
+  /*margin-top: 1.3em;*/
+}
+.dashbody .box-highlight {
+  border: 0px solid #eee;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
+}
+.dashbody .box-highlight .details {
+  border: 0px solid #bbb;
+  min-height: 10.50em;
+}
+.dashbody .box-highlight .action {
+  border: 0px solid #eee;
+  padding: 0.9em 0.3em;
+  min-height: 3.15em;
+  color: #f7f7f7;
+}
+.box-highlight .action .arrow-holder {
+  text-align: right;
+}
+
+.box-highlight .description {
+  text-align: right;
+}
+.box-highlight .description span {
+  display: block;
+}
+.box-highlight .description .stat {
+  font-weight: 300;
+  font-size: 2.5em;
+}
+.box-highlight .description .stat-label {
+  font-weight: 300;
+  font-size: 1.3em;
+}
+.box-highlight .view-more:link,
+.box-highlight .view-more:visited {
+  text-transform: uppercase;
+  font-size: 0.9em;
+  color: #D9DADB;
+}
+.box-highlight .view-more:hover,
+.box-highlight .view-more:active {
+  text-decoration: none;
+  color: #f1f2f3;
+}
+.box-highlight .view-more-arrow:link,
+.box-highlight .view-more-arrow:visited {
+  color: #f1f2f3;
+  text-align: right;
+}
+
+.box-highlight .details .icon-holder,
+.box-highlight .details .description {
+  position: relative;
+  top: 1.9em;
+}
+
+.one {
+  background-color: #27a9e3;
+}
+.one .action {
+  background-color: #208dbe;
+}
+.one .action:hover {
+  background-color: #1D7FAB;
+}
+.two {
+  background-color: #28b779;
+}
+.two .action {
+  background-color: #10a062;
+}
+.two .action:hover {
+  background-color: #0E9058;
+}
+.three {
+  background-color: #852b99;
+}
+.three .action {
+  background-color: #6e1881;
+}
+.three .action:hover {
+  background-color: #631674;
+}
+.four {
+  background-color: #FA2B2B;
+}
+.four .action {
+  background-color: #AF1E1E;
+}
+.four .action:hover {
+  background-color: #9E1B1B;
+}
