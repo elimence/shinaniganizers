@@ -1,0 +1,64 @@
+.banner {
+  background-color: #fff;
+  height: 350px;
+  background-image: url('/assets/images/banner.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-size: 50%;*/
+  /*background-attachment: fixed;
+  background-position: 0px -120px;
+  border: 1px solid #bbb;*/
+}
+.info {
+  width: 70%;
+  border: 0px solid #efefef;
+  margin-top: 1.0em;
+}
+.info .intro #brand {
+  color: #007AFF;
+  font-size: 45px;
+}
+.info .intro .lead {
+  font-size: 18px;
+}
+.info .login .input {
+  margin-bottom: 1.0em;
+  padding: 1.5em 1.0em;
+  font-size: 1.3em;
+}
+.info .login #username {
+  margin-top: 1.8em;
+}
+.info .login #login-btn {
+  margin-bottom: 2.5em;
+}
+
+
+/* Up to Medium Screen Sizes (per bootstrap dimensions) */
+@media (max-width: 400px) {
+  .info {
+    width: 95%;
+  }
+  .info .intro #brand {
+    font-size: 32px;
+    margin-bottom: 0.1em;
+  }
+  .info .intro .lead {
+    font-size: 14px;
+  }
+}
+
+/* Up to Medium Screen Sizes (per bootstrap dimensions) */
+@media (max-width: 1199px) {
+  .info {
+    width: 85%;
+  }
+}
+
+/* Large */
+@media (min-width: 1200px) {
+  .info .login {
+    border-left: 1px solid #efefef;
+    padding-left: 2em;
+  }
+}
