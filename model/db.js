@@ -35,6 +35,18 @@ var FieldOfficerSchema = new Schema({
   }
 });
 
+// Analyst Schema
+var AnalystSchema = new Schema({
+  firstname: String,
+  lastname: String,
+  username: String,
+  password: String,
+  created_at: {
+    type: Date,
+    default: Date.now
+  }
+});
+
 // Birth Records
 var BirthRecordSchema = new Schema({
   fullname: String,
@@ -58,4 +70,5 @@ var BirthRecordSchema = new Schema({
 
 // Compile Schemas into Models
 mongoose.model( 'FieldOfficer', FieldOfficerSchema );
+mongoose.model( 'Analyst', AnalystSchema );
 mongoose.model( 'BirthRecord', BirthRecordSchema );
