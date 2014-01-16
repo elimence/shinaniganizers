@@ -34,6 +34,14 @@ function byPhone(phone, callback) {
   });
 }
 
+function byInternalID(id, callback) {
+  FieldOfficer.findById(id, function (err, location) {
+    if (err) callback(err);
+    else callback(null, location);
+  });
+}
+
 exports.save = save;
 exports.all = all;
 exports.findByPhone = byPhone;
+exports.findByInternalID = byInternalID;
