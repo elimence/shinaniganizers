@@ -1,6 +1,7 @@
 // Module Dependencies
 var Pass = require('../helpers/password'),
     Analyst = require('../model/analyst'),
+    Location = require('../model/location'),
     step = require('async');
 
 var init = function(app) {
@@ -49,6 +50,21 @@ var init = function(app) {
   //     lastname: 'Ako',
   //     username: 'kozzle',
   //     password: 'bSvMUfurp49acd97afa91f652fa7a733f1974abde'
+  //   }, function (err, saved) {
+  //     if (err) res.send('Something went wrong');
+  //     else res.send(saved);
+  //   })
+  // }); FIELIMUA DAY CARE CENTRE
+
+  // New Location ## Remove
+  // app.get('/location/new', function (req, res) {
+  //   Location.save({
+  //     identifier: 'hpnv',
+  //     name: 'Health Post Nevademe',
+  //     description: 'A Health post',
+  //     region: 'Volta',
+  //     district: 'Ketu South',
+  //     constituency: 'Ketu South'
   //   }, function (err, saved) {
   //     if (err) res.send('Something went wrong');
   //     else res.send(saved);
