@@ -1,6 +1,6 @@
 {
-  "name": "BirthsReport",
-  "description": "Automated Births Registry for Ghana",
+  "name": "SafeWater",
+  "description": "Improving information flow for safe water in Ghana",
   "version": "0.0.1",
   "scripts": {
     "start": "node app"
