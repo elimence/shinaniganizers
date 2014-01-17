@@ -1,0 +1,19 @@
+extends layout
+
+block pagespecificstyles
+  link(href='/assets/css/map.css', rel='stylesheet')
+
+block content
+  #map-canvas.container-fluid.main.map-canvas
+  .controls
+    a(href='/dashboard/reports?kind=#{kind}')
+      i.fa.fa-caret-square-o-left.fa-5x.back-to-dashboard
+    each report in reports
+      input(class='coord', type='hidden', name='#{report.location.name}', data-location-name='#{report.location.name}', data-location-lat='#{report.location.lat}', data-location-lng='#{report.location.lng}', data-location-status='#{kind}')
+
+  script(src='/assets/js/jquery.js')
+  script(src='/assets/js/bootstrap.min.js')
+  script(type='text/javascript', src='http://maps.googleapis.com/maps/api/js?sensor=false')
+  script(src='/assets/js/map.js')
+  script
+    $(function () { init();});
