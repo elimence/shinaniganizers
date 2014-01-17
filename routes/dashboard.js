@@ -46,20 +46,9 @@ var init = function(app) {
 
   // Dashboard Reports
   app.get('/dashboard/reports', function (req, res) {
-    var pumpStatus = req.query.kind || 'all';
-    var pumpStatus = (pumpStatus == 'working') ? 'n' : ((pumpStatus == 'faulty') ? 'y' : pumpStatus);
-    // Report.findByPumpStatus(pumpStatus, function (err, reports) {
-    //     if (err) res.send('Something went wrong.');
-    //     else res.send(reports);
-    //   });
     if (req.session.user) {
       var pumpStatus = req.query.kind || 'all';
       var pumpStatus = (pumpStatus == 'working') ? 'n' : ((pumpStatus == 'faulty') ? 'y' : pumpStatus);
-
-      // Report.findByPumpStatus(pumpStatus, function (err, reports) {
-      //   if (err) res.send('Something went wrong.');
-      //   else res.send(reports);
-      // });
 
       step.parallel([
         function(callback){
