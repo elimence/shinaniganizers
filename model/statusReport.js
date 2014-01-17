@@ -48,7 +48,7 @@ function byPumpStatus(pumpStatus, callback) {
           sender: data[1],
           created_at: item['created_at']
         };
-        console.log(augmentedData);
+        // console.log(augmentedData);
         callback(null, augmentedData);
       }
     });
